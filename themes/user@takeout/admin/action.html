@@ -1,0 +1,28 @@
+@extends("/admin/_layouts/action.html")
+
+@section("user-status")
+<div class="acms-admin-inline-btn">
+	<button class="js-acms-preview-button acms-admin-btn"  onclick="location.href='/bid/1/uid/%{SUID}/admin/user_edit/'">店舗情報編集</button>
+</div>
+@endsection
+
+@section("goto-admin")
+@endsection
+
+@section("entry-insert")
+
+<!-- BEGIN insert -->
+<form action="" method="post" class="acms-admin-inline-btn">
+ <input type="submit" name="ACMS_POST_2GET" value="<!--T-->お知らせ追加<!--/T-->"  class="acms-admin-btn acms-admin-btn-success"/>
+<input type="hidden" name="admin" value="entry-edit" />
+<input type="hidden" name="bid" value="%{BID}" />
+<input type="hidden" name="cid" value="1" />
+</form>
+		<form action="" method="post" class="acms-admin-inline-btn">
+			<input type="submit" name="ACMS_POST_2GET" value="<!--T-->管理ページ<!--/T-->" class="acms-admin-btn" />
+			<input type="hidden" name="admin" value="top" />
+			<input type="hidden" name="bid" value="%{BID}" />
+		</form>
+<!-- END insert -->
+
+@endsection

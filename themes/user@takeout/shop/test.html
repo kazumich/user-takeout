@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="ja"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="ja"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="ja">
+<!--<![endif]-->
+
+<head>
+	@include("/include/head/meta.html")
+	@include("/include/head/link.html")
+	@include("/include/head/js.html")
+</head>
+
+<body>
+	<!-- ヘッダー -->
+	@include("/include/header.html")
+
+
+
+	<div class="acms-container js-pretty-scroll-container">
+		<!-- ※管理用パーツ -->
+		@include("/admin/action.html")
+
+		<div class="acms-grid">
+			<main class="acms-col-lg-9 main">
+				<div class="main-inner is-space-right">
+					<!-- ページタイトル -->
+					@include("/include/header/page-title.html")
+					<!-- タグフィルター -->
+					@include("/include/tag/filter.html")
+
+					<!-- 位置情報を使った近隣店舗の表示 -->
+					<!-- BEGIN_IF [%{PAGE}/eq/1/_and_/%{FIELD}/em] -->
+					<form action="" method="post" class="js-post_include-ready" data-geo="true" id="currentGeoButton">
+						<input type="hidden" id="currentGeo" name="tpl" value="/include/parts/current-geo-iframe.html">
+						<input type="hidden" name="bid" value="%{BID}" />
+						<input type="hidden" name="cid" value="%{CID}" />
+						<input type="submit" name="ACMS_POST_2GET" />
+					</form>
+					<!-- END_IF -->
+
+					<!-- サマリー -->
+					@include("/include/user/list.html", {"mid": "shop-list"})
+
+					<!-- 確認用テンプレート -->
+					@include("/include/check-seo.html")
+					<!-- BEGIN_MODULE Touch_Category -->
+					<!-- トピックパス -->
+					@include("/include/header/topicpath.html")
+					<!-- END_MODULE Touch_Category -->
+
+				</div>
+			</main>
+
+			<div class="acms-col-lg-3 side">
+				<div class="js-pretty-scroll">
+					<!-- 検索フォーム -->
+					@include("/include/parts/search.html")
+
+					<!-- バナー -->
+					@include("/include/siteparts/banner.html")
+
+										<!-- モバイル：ナビゲーションメニュー -->
+										@include("/include/parts/mobile-nav.html")
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- お問い合わせ -->
+	@include("/include/footer/suggest.html")
+
+	<!-- フッター -->
+	@include("/include/footer.html")
+</body>
+
+</html>

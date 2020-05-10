@@ -1,0 +1,67 @@
+<!-- BEGIN_MODULE User_Search id="{{mid}}" -->
+<section class="module-section">
+	@include("/admin/module/setting.html")
+	<!-- BEGIN_IF [%{FIELD}/em] -->
+	<div class="module-header clearfix">
+		<!-- BEGIN_MODULE User_Search id="shop-list-top" -->
+		<h2 class="module-heading">テイクアウト可能な店舗 (<span class="shop-number">掲載数<strong>{itemsAmount}</strong>店)</span></h2>
+		<!-- END_MODULE User_Search -->
+		<!-- BEGIN_MODULE Touch_NotIndex -->
+		<a href="/shop/" class="module-index-link"><span class="acms-icon acms-icon-arrow-right"></span>一覧</a>
+		<!-- END_MODULE Touch_NotIndex -->
+	</div>
+	<!-- END_IF -->
+	<!-- BEGIN notFound -->
+	<div>
+		<p>ただいまページを準備しております。もうしばらくお待ちください。</p>
+	</div>
+	<!-- END notFound -->
+	<ul class="card">
+		<!-- BEGIN user:loop -->
+		<li class="card-item {entry:loop.class} js-biggerlink">
+			<a href="/shop/uid/{id}/detail.html" class="card-link">
+				<div class="card-img">
+					<!-- BEGIN_IF [{food_picture1@path}/nem] -->
+					<img src="/images/placeholder/image.svg"
+						data-src="%{ARCHIVES_DIR}{food_picture1@path}[resizeImg(480,320)]" alt=""
+						class="acms-img-responsive js-lazy-load" />
+					<!-- ELSE -->
+					<img src="/images/noImage.png" width="480" height="320" alt="" class="acms-img-responsive">
+					<!-- END_IF -->
+				</div>
+				<h3 class="card-title">{name}</h3>
+				<table>
+					<tr>
+						<th>ジャンル</th>
+						<td>
+			<!-- BEGIN genre_list:loop -->
+			<span class="acms-label">{genre_list}</span>
+			<!-- END genre_list:loop -->
+						</td>
+					</tr>
+					<!-- BEGIN_MODULE Module_Field id="area_list" -->
+					<th>{module_heading}</th>
+					<!-- END_MODULE Module_Field -->
+					<td>
+						<!-- BEGIN area_list:loop -->
+						<span class="acms-label">{area_list}</span>
+						<!-- END area_list:loop -->
+					</td>
+					</tr>
+					<!-- BEGIN_IF [{delivery_name[0]}/nem] -->
+					<tr>
+						<th>デリバリー</th>
+						<td>可</td>
+					</tr>
+					<!-- END_MODULE Touch_NotTop -->
+					<!-- END_IF -->
+				</table>
+				<p>{catchcopy}</p>
+			</a>
+		</li>
+		<!-- END user:loop -->
+	</ul>
+	<!-- ページャー -->
+	@include("/include/parts/pager.html")
+</section>
+<!-- END_MODULE User_Search -->

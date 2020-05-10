@@ -1,0 +1,8 @@
+<!-- BEGIN_MODULE User_Search id="user-check" -->
+<!-- BEGIN user:loop -->
+<!-- BEGIN_IF [{published}/eq/true] --><!-- ELSE -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-alert-icon-before acms-admin-icon-attention"></span>
+	<button class="js-acms-alert-close acms-admin-alert-icon-after acms-admin-margin-right-mini">×</button>
+	まだ公開の準備が完了しておりません。上記の <a href="/bid/1/uid/{id}/admin/user_edit/" class="acms-admin-btn">店舗情報編集</a> ボタンをクリックして登録作業の続きを行ってください。
+</p><!-- END_IF --><!-- END user:loop -->
+<!-- END_MODULE User_Search -->

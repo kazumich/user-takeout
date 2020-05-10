@@ -1,0 +1,70 @@
+<!-- BEGIN_MODULE User_GeoList id="shop_geolist" -->
+<section class="module-section">
+
+	<div class="module-header clearfix">
+		<!-- BEGIN moduleField -->
+		<!-- BEGIN module_heading:veil -->
+		<h2 class="module-heading">{module_heading}</h2><!-- END module_heading:veil -->
+		<!-- END moduleField -->
+	</div>
+
+	@include("/admin/module/setting.html")
+	<!-- BEGIN notFoundGeolocation -->
+	<p>現在位置を取得できませんでした。</p>
+	<!-- END notFoundGeolocation -->
+
+	<!-- BEGIN notFound -->
+	<p>近くの記事はありませんでした。</p>
+	<!-- END notFound -->
+	<ul class="card acms-list-nostyle acms-margin-top-small">
+		<!-- BEGIN user:loop -->
+		<li class="card-item {entry:loop.class} js-biggerlink">
+			<a href="/shop/uid/{id}/detail.html" class="card-link">
+
+
+				<div class="card-img">
+					<!-- BEGIN_IF [{food_picture1@path}/nem] -->
+					<img src="/images/placeholder/image.svg"
+						data-src="%{ARCHIVES_DIR}{food_picture1@path}[resizeImg(480,320)]" alt=""
+						class="acms-img-responsive js-lazy-load" />
+					<!-- ELSE -->
+					<img src="/images/noImage.png" width="480" height="320" alt="" class="acms-img-responsive">
+					<!-- END_IF -->
+				</div>
+				<h3 class="card-title">{name}</h3>
+				<p class="card-copy">{catchcopy}</p>
+
+				<table>
+					<!-- BEGIN genre:veil -->
+
+
+					<tr>
+						<th>ジャンル</th>
+						<td>
+							<!-- BEGIN genre:loop -->
+							<span class="acms-label">{genre}</span>
+							<!-- END genre:loop -->
+						</td>
+					</tr>
+					<!-- END genre:veil -->
+					<!-- BEGIN_MODULE Module_Field id="area_list" -->
+					<th>{module_heading}</th>
+					<!-- END_MODULE Module_Field -->
+					<td>
+						<!-- BEGIN area_list:loop -->
+						<span class="acms-label">{area_list}</span>
+						<!-- END area_list:loop -->
+					</td>
+					</tr>
+
+				</table>
+				<p class="distance"><i class="acms-icon-map-pin" aria-hidden="true"></i>%{ENTRY_TITLE}から {geo_distance}[distance]</p>
+			</a>
+		</li>
+		<!-- END user:loop -->
+	</ul>
+	<!-- ページャー -->
+	@include("/include/parts/pager.html")
+
+</section>
+<!-- END_MODULE User_GeoList -->

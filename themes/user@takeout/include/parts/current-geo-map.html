@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>現在地から近いスポットマップ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/themes/system/css/normalize.css">
+  <link rel="stylesheet" href="/themes/system/css/acms-admin.min.css">
+  <link rel="stylesheet" href="/themes/system/css/acms.min.css">
+  <script src="%{JS_LIB_JQUERY_DIR}jquery-%{JS_LIB_JQUERY_DIR_VERSION}.min.js" charset="UTF-8"></script>
+  <!-- BEGIN_MODULE Js -->
+  <script src="/acms.js{arguments}" charset="UTF-8" id="acms-js"></script>
+  <!-- END_MODULE Js -->
+  <script src="/js/modernizr.js"></script>
+<style>
+  #map {
+    height: 400px;
+  }
+  .infobox .acms-label {
+margin-right: 4px;
+  }
+  .infobox a {
+    text-decoration: none;
+  }
+</style>
+</head>
+
+<body>
+
+  <div id="map"></div>
+ <script>
+  var map;
+  var marker = [];
+  var infoWindow = [];
+
+  function initMap() {
+    var mapLatLng = new google.maps.LatLng({
+      lat: markerData[0]['lat'],
+      lng: markerData[0]['lng']
+    }); // 緯度経度のデータ作成
+
+    map = new google.maps.Map(document.getElementById('map'), { //
+      center: {
+        lat: %{NOW_LAT}, // 緯度
+        lng: %{NOW_LNG}, // 経度
+      },
+      zoom: 15,
+    });
+    var styleOptions =
+
+      [{
+        "featureType": "landscape.man_made",
+        "elementType": "geometry",
+        "stylers": [{
+          "color": "#f7f1df"
+        }]
+      }, {
+        "featureType": "landscape.natural",
+        "elementType": "geometry",
+        "stylers": [{
+          "color": "#d0e3b4"
+        }]
+      }, {
+        "featureType": "landscape.natural.terrain",
+        "elementType": "geometry",
+        "stylers": [{
+          "visibility": "off"
+        }]
+      }, {
+        "featureType": "poi.medical",
+        "elementType": "geometry",
+        "stylers": [{
+          "color": "#fbd3da"
+        }]
+      }, {
+        "featureType": "poi.park",
+        "elementType": "geometry",
+        "stylers": [{
+          "color": "#bde6ab"
+        }]
+      }, {
+        "featureType": "road",
+        "elementType": "geometry.stroke",
+        "stylers": [{
+          "visibility": "off"
+        }]
+      }, {
+        "featureType": "road",
+        "elementType": "labels",
+        "stylers": [{
+          "visibility": "off"
+        }]
+      }, {
+        "featureType": "road.highway",
+        "elementType": "geometry.fill",
+        "stylers": [{
+          "color": "#ffe15f"
+        }]
+      }, {
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [{
+          "color": "#efd151"
+        }]
+      }, {
+        "featureType": "road.arterial",
+        "elementType": "geometry.fill",
+        "stylers": [{
+          "color": "#ffffff"
+        }]
+      }, {
+        "featureType": "road.local",
+        "elementType": "geometry.fill",
+        "stylers": [{
+          "color": "black"
+        }]
+      }, {
+        "featureType": "transit.station.airport",
+        "elementType": "geometry.fill",
+        "stylers": [{
+          "color": "#cfb2db"
+        }]
+      }, {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [{
+          "color": "#a2daf2"
+        }]
+      }]
+    map.setOptions({styles: styleOptions});
+    for (var i = 0; i < markerData.length; i++) {
+      markerLatLng = {
+        lat: markerData[i]['lat'],
+        lng: markerData[i]['lng']
+      };　
+      marker[i] = new google.maps.Marker({
+        position: markerLatLng,
+        map: map
+      });
+      infoWindow[i] = new google.maps.InfoWindow({ // 吹き出しの追加
+        content: '<div class="infobox"><a href="' + markerData[i]['url'] + '" target="_top">'+ markerData[i]['pic'] + markerData[i]['name'] + '</a></div>' // 吹き出しに表示する内容
+      });
+
+      markerEvent(i); // マーカーにクリックイベントを追加
+    }
+    marker[0].setOptions({
+      icon: {
+        url: markerData[0]['icon'] // マーカーの画像を変更
+      }
+    });
+
+  }
+  var markerData = [{
+        name: "現在地",
+        lat: %{NOW_LAT},
+        lng: %{NOW_LNG},
+        pic: '',
+        icon: '%{CURRENT_THEMES_DIR}images/map_current.png',
+      }, <!-- BEGIN_MODULE User_GeoList id="current_geo_list" --><!-- BEGIN user:loop -->{
+      name: "<!-- BEGIN genre:loop --><span class=\"acms-label\">{genre_list}</span><!-- END genre:loop --><br>{name}",
+      lat: {geo_lat},
+      lng: {geo_lng},
+      <!-- BEGIN_IF [{food_picture1@path}/nem] -->pic : '<img src="%{ARCHIVES_DIR}{food_picture1@path}[resizeImg(120,90)]" alt=""><br>',<!-- ELSE -->pic: '',<!-- END_IF -->
+      url: 'https://takeout-meieki.com/shop/detail.html?uid={id}',
+    },<!-- END user:loop --><!-- END_MODULE User_GeoList -->
+  ];
+
+  function markerEvent(i) {
+    marker[i].addListener('click', function() { // マーカーをクリックしたとき
+      infoWindow[i].open(map, marker[i]); // 吹き出しの表示
+    });
+  }
+
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=%{GOOGLE_API_KEY}&callback=initMap"></script>
+
+
+</body>
+
+</html>

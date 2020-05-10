@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="ja"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="ja"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="ja">
+<!--<![endif]-->
+
+<head>
+	@include("/include/head/meta-user.html")
+	@include("/include/head/link.html")
+	<link href="/js/slick/slick.css" rel="stylesheet">
+	@include("/include/head/js.html")
+	<script src="/js/slick/slick.js" charset="UTF-8"></script>
+	<script src="/js/top.js" charset="UTF-8"></script>
+</head>
+
+<body>
+	<!-- ヘッダー -->
+	@include("/include/header.html")
+
+	<div class="acms-container js-pretty-scroll-container">
+		<!-- ※管理用パーツ -->
+		@include("/admin/action.html")
+
+		<div class="acms-grid">
+			<main class="acms-col-lg-9 main">
+				<div class="main-inner">
+
+					<!-- エントリーボディ（日付無し） -->
+					@include("/include/user/detail.html")
+					<!-- 確認用テンプレート -->
+
+					@include("/include/check-seo.html")
+
+					@include("/include/user/geolist.html")
+
+				</div>
+
+				<!-- トピックパス -->
+				@include("/include/header/topicpath.html")
+			</main>
+
+			<div class="acms-col-lg-3 side">
+				<div class="js-pretty-scroll">
+					<!-- 検索フォーム -->
+					@include("/include/parts/search.html")
+
+
+					<!-- バナー -->
+					@include("/include/siteparts/banner.html")
+
+					<!-- モバイル：ナビゲーションメニュー -->
+					@include("/include/parts/mobile-nav.html")
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- お問い合わせ -->
+	@include("/include/footer/suggest.html")
+
+	<!-- フッター -->
+	@include("/include/footer.html")
+	<script>
+		$(function () {
+			var slider = "#slider"; // スライダー
+			var thumbnailItem = "#thumbnail-list .thumbnail-item"; // サムネイル画像アイテム
+
+			// サムネイル画像アイテムに data-index でindex番号を付与
+			$(thumbnailItem).each(function () {
+				var index = $(thumbnailItem).index(this);
+				$(this).attr("data-index", index);
+			});
+
+			// スライダー初期化後、カレントのサムネイル画像にクラス「thumbnail-current」を付ける
+			// 「slickスライダー作成」の前にこの記述は書いてください。
+			$(slider).on('init', function (slick) {
+				var index = $(".slide-item.slick-slide.slick-current").attr("data-slick-index");
+				$(thumbnailItem + '[data-index="' + index + '"]').addClass("thumbnail-current");
+			});
+
+			//slickスライダー初期化
+			$(slider).slick({
+				lazyLoad: 'ondemand',
+				accessibility: true,
+				dots: true,
+				arrows: true,
+				prevArrow: '<button type="button" class="slick-prev">前へ</button>',
+				nextArrow: '<button type="button" class="slick-next">次へ</button>',
+				autoplay: true,
+				speed: 1000,
+				autoplaySpeed: 5000,
+				pauseOnHover: false,
+				fade: true,
+				infinite: false //これはつけましょう。
+			});
+			//サムネイル画像アイテムをクリックしたときにスライダー切り替え
+			$(thumbnailItem).on('click', function () {
+				var index = $(this).attr("data-index");
+				$(slider).slick("slickGoTo", index, false);
+			});
+
+			//サムネイル画像のカレントを切り替え
+			$(slider).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+				$(thumbnailItem).each(function () {
+					$(this).removeClass("thumbnail-current");
+				});
+				$(thumbnailItem + '[data-index="' + nextSlide + '"]').addClass("thumbnail-current");
+			});
+		});
+	</script>
+
+</body>
+
+</html>

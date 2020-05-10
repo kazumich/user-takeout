@@ -1,0 +1,267 @@
+<!-- BEGIN_MODULE User_Search id="shop-detail" -->
+<!-- BEGIN notFound -->
+<section class="acms-entry">
+	<h2 class="not-found-title">Not Found</h2>
+	<p>ただいまページを準備しております。もうしばらくお待ちください。</p>
+</section>
+<!-- END notFound -->
+
+<!-- 1記事▼▼ -->
+<!-- BEGIN user:loop -->
+
+<div class="page-title-wrapper">
+
+	<h1 class="page-title acms-margin-bottom-small">{name}</h1>
+	<!-- BEGIN shop:veil -->
+
+
+	<div class="acms-grid">
+		<div class="acms-col-sm-6">
+			<span class="acms-icon-lunch" aria-hidden="true"></span>
+
+			<!-- BEGIN genre_list:loop -->
+			<a href="/shop/field/genre_list/{genre_list}"><span class="acms-label">{genre_list}</span></a>
+
+			<!-- END genre_list:loop -->
+
+		</div>
+		<div class="acms-col-sm-6">
+			<span class="acms-icon-home" aria-hidden="true"></span>
+			<!-- BEGIN area_list:loop -->
+			<a href="/shop/field/area_list/{area_list}"><span class="acms-label">{area_list}</span></a>
+			<!-- END area_list:loop -->
+		</div>
+	</div>
+	<!-- END shop:veil -->
+</div>
+
+<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+	<p class="entry-title acms-text-right"><a href="/bid/1/uid/{id}/admin/user_edit/">簡易編集</a></p>
+<!-- END_MODULE Touch_SessionWithAdministration -->
+
+
+<p class="catchcopy">{catchcopy}</p>
+<div class="acms-grid">
+	<div class="acms-col-12">
+		<!-- BEGIN slider:veil -->
+		<ul id="slider">
+			<!-- BEGIN food_picture1@path:veil -->
+			<li class="slide-item"> <img src="/images/placeholder/image.svg"
+					data-src="%{ARCHIVES_DIR}{food_picture1@path}[resizeImgFill(800,500)]" alt=""
+					class="acms-img-responsive js-lazy-load" />
+			</li>
+			<!-- END food_picture1@path:veil -->
+			<!-- BEGIN food_picture2@path:veil -->
+			<li class="slide-item"> <img src="/images/placeholder/image.svg"
+					data-src="%{ARCHIVES_DIR}{food_picture2@path}[resizeImgFill(800,500)]" alt=""
+					class="acms-img-responsive js-lazy-load" />
+			</li>
+			<!-- END food_picture2@path:veil -->
+			<!-- BEGIN food_picture3@path:veil -->
+			<li class="slide-item"> <img src="/images/placeholder/image.svg"
+					data-src="%{ARCHIVES_DIR}{food_picture3@path}[resizeImgFill(800,500)]" alt=""
+					class="acms-img-responsive js-lazy-load" />
+			</li>
+			<!-- END food_picture3@path:veil -->
+			<!-- BEGIN food_picture4@path:veil -->
+			<li class="slide-item"> <img src="/images/placeholder/image.svg"
+					data-src="%{ARCHIVES_DIR}{food_picture4@path}[resizeImgFill(800,500)]" alt=""
+					class="acms-img-responsive js-lazy-load" />
+			</li>
+			<!-- END food_picture4@path:veil -->
+		</ul>
+		<!-- END slider:veil -->
+		<!-- BEGIN thumbnail-list:veil -->
+		<ul id="thumbnail-list" style="margin-top: 60px;">
+			<!-- BEGIN food_picture1@path:veil -->
+			<li class="thumbnail-item"> <img src="/images/placeholder/image.svg"
+					data-src="%{ARCHIVES_DIR}{food_picture1@path}[resizeImgFill(120,80)]" alt=""
+					class="acms-img-responsive js-lazy-load" />
+			</li>
+			<!-- END food_picture1@path:veil -->
+			<!-- BEGIN food_picture2@path:veil -->
+			<li class="thumbnail-item"> <img src="/images/placeholder/image.svg"
+					data-src="%{ARCHIVES_DIR}{food_picture2@path}[resizeImgFill(120,80)]" alt=""
+					class="acms-img-responsive js-lazy-load" />
+			</li>
+			<!-- END food_picture2@path:veil -->
+			<!-- BEGIN food_picture3@path:veil -->
+			<li class="thumbnail-item"> <img src="/images/placeholder/image.svg"
+					data-src="%{ARCHIVES_DIR}{food_picture3@path}[resizeImgFill(120,80)]" alt=""
+					class="acms-img-responsive js-lazy-load" />
+			</li>
+			<!-- END food_picture3@path:veil -->
+		</ul>
+		<!-- END thumbnail-list:veil -->
+		<!-- BEGIN introduction_text:veil -->
+		<div class="introduction-text acms-margin-bottom-large">{introduction_text}[raw]</div>
+		<!-- END introduction_text:veil -->
+		<!-- BEGIN menu:veil -->
+		<div class="acms-panel acms-margin-bottom-large">
+			<div class="acms-panel-header acms-margin-bottom-small">
+				<h3 class="acms-panel-title">主なテイクアウトメニュー<!-- BEGIN tax:veil -->({tax})<!-- END tax:veil --></h3>
+			</div>
+			<div class="acms-admin-panel-body">
+				<!-- BEGIN menu_picture@path:veil --><img src="/images/placeholder/image.svg"
+					data-src="%{ARCHIVES_DIR}{menu_picture@path}" alt=""
+					class="acms-img-responsive js-lazy-load" />
+				<!-- END menu_picture@path:veil -->
+
+				<table class="acms-table acms-table-striped acms-width-max price">
+					{special_menu}[table]</table>
+			</div>
+		</div>
+		<!-- END menu:veil -->
+		<div class="acms-panel acms-margin-bottom-large">
+			<div class="acms-panel-header">
+				<h3 class="acms-panel-title">このお店について</h3>
+			</div>
+			<table class="acms-table acms-table-heading acms-width-max shop-info">
+				<!-- BEGIN genre_list:veil -->
+				<tr>
+					<th>ジャンル</th>
+					<td>
+			<!-- BEGIN genre_list:loop -->
+			<a href="/shop/field/genre_list/{genre_list}"><span class="acms-label">{genre_list}</span></a>
+			<!-- END genre_list:loop -->
+					</td>
+				</tr>
+				<!-- END genre_list:veil -->
+				<!-- BEGIN_MODULE Module_Field id="area_list" -->
+				<th>{module_heading}</th>
+				<!-- END_MODULE Module_Field -->
+				<td>
+					<!-- BEGIN area_list:loop -->
+					<a href="/shop/field/area_list/{area_list}"><span class="acms-label">{area_list}</span></a>
+					<!-- END area_list:loop -->
+				</td>
+				</tr>
+				<tr>
+					<th>住所</th>
+					<td>
+						<p class="acms-margin-none acms-margin-bottom-medium">{address} {geo_zoom}</p>
+						<div id="map" class="acms-margin-bottom-small" style="width:100%; height:300px"></div>
+						<!-- BEGIN_IF [{geo_lat}/nem/] -->
+						<script type="text/javascript">
+							var map;
+							var center = {
+								lat: {geo_lat},
+								lng: {geo_lng}
+							};
+							function initMap() \{
+								map = new google.maps.Map(document.getElementById('map'), \{
+									center: center,
+									zoom: {geo_zoom}
+				                \});
+								marker = new google.maps.Marker(\{
+									position: center,
+									map: map
+								\});
+							\}
+						</script>
+						<!-- END_IF -->
+						<script src="https://maps.googleapis.com/maps/api/js?key=%{GOOGLE_API_KEY}&callback=initMap"></script>
+						<p class="acms-text-right acms-margin-none"><a
+								href="https://www.google.com/maps?q={geo_lat},{geo_lng}">大きい地図で見る</a></p>
+					</td>
+				</tr>
+				<!-- BEGIN access:veil -->
+				<tr>
+					<th>アクセス</th>
+					<td>{access}</td>
+				</tr>
+				<!-- END access:veil -->
+				<!-- BEGIN spot_tel:veil -->
+				<tr>
+					<th>電話番号</th>
+					<td>{spot_tel}</td>
+				</tr>
+				<!-- END spot_tel:veil -->
+				<!-- BEGIN open_time:veil -->
+				<tr>
+					<th>営業時間</th>
+					<td>{open_time}[nl2br]<span class="note">営業時間については政府・自治体などの要請などにより、変更する場合もありますのでご了承ください。</span></td>
+				</tr>
+				<!-- END open_time:veil -->
+				<!-- BEGIN takeout_open_time:veil -->
+				<tr>
+					<th>テイクアウト営業時間</th>
+					<td>{takeout_open_time}[nl2br]<span class="note">営業時間については政府・自治体などの要請などにより、変更する場合もありますのでご了承ください。</span>
+					</td>
+				</tr>
+				<!-- END takeout_open_time:veil -->
+				<!-- BEGIN holiday:veil -->
+				<tr>
+					<th>定休日</th>
+					<td>{holiday}</td>
+				</tr>
+				<!-- END holiday:veil -->
+				<!-- BEGIN spot_url:veil -->
+				<tr>
+					<th>ホームページ</th>
+					<td><a href="{spot_url}">{spot_url}</a></td>
+				</tr>
+				<!-- END spot_url:veil -->
+				<!-- BEGIN sns:veil -->
+				<tr>
+					<th>SNS</th>
+					<td>
+						<ul class="sns">
+							<!-- BEGIN twitter_account:veil -->
+							<li class="acms-admin-inline-block"><a href="https://twitter.com/{twitter_account}">
+									<span class="acms-icon-twitter-square" aria-label="Twitterアカウント"></span>
+								</a></li>
+							<!-- END twitter_account:veil -->
+							<!-- BEGIN instagram_account:veil -->
+							<li class="acms-admin-inline-block"><a href="https://www.instagram.com/{instagram_account}">
+									<img src="%{CURRENT_THEMES_DIR}images/icon_instagram.svg" alt="Instagramアカウント">
+								</a></li>
+							<!-- END instagram_account:veil -->
+							<!-- BEGIN facebook_account:veil -->
+							<li class="acms-admin-inline-block"><a href="https://www.facebook.com/{facebook_account}">
+									<span class="acms-icon-facebook-circle" aria-label="Facebookアカウント"></span>
+								</a></li>
+							<!-- END facebook_account:veil -->
+							<!-- BEGIN line_account:veil -->
+							<li class="acms-admin-inline-block"><a href="{line_account}">
+									<img src="%{CURRENT_THEMES_DIR}images/icon_line.svg" alt="LINEアカウント">
+								</a></li>
+							<!-- END line_account:veil -->
+						</ul>
+					</td>
+				</tr>
+				<!-- END sns:veil -->
+				<tr>
+					<th>お支払い情報</th>
+					<td>
+						<ul class="payment acms-list-nostyle acms-list-inline">
+							<!-- BEGIN payment:loop -->
+							{payment}[list]
+							<!-- END payment:loop -->{payment_other}[list]
+						</ul>
+					</td>
+				</tr>
+				<!-- BEGIN delivery:veil -->
+				<tr>
+					<th>デリバリー</th>
+					<td>
+						<ul class="payment acms-list-nostyle acms-list-inline">
+							<!-- BEGIN delivery_list:loop -->
+							<li><a href="{delivery_url}" class="acms-btn acms-btn-flat">{delivery_name}</a></li>
+							<!-- END delivery_list:loop -->
+						</ul>
+					</td>
+				</tr>
+				<!-- END delivery:veil -->
+			</table>
+		</div>
+	</div>
+</div>
+
+
+</article>
+<!-- END user:loop -->
+<!-- 1記事▲▲ -->
+
+
+<!-- END_MODULE User_Search -->

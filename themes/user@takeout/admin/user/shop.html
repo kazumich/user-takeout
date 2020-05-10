@@ -1,0 +1,521 @@
+<table class="entryFormTable acms-admin-table-entry">
+
+    <th>掲載</th>
+    <td>
+      <div class="acms-admin-form-checkbox">
+        <input type="checkbox" name="published[]" value="true" {published:checked#true} id="input-checkbox-published-true" />
+        <label for="input-checkbox-published-true">
+          <i class="acms-admin-ico-checkbox"></i>掲載する</label>
+      </div>
+      <input type="hidden" name="field[]" value="published" />
+    </td>
+  </tr>
+
+    <tr>
+      <td colspan="2"><h2 class="acms-admin-text-danger">担当者情報　＜サイト上には掲載されません＞</h2></td>
+    </tr>
+
+  <tr>
+    <th>店舗担当者名 ※</th>
+    <td>
+      <input type="text" name="tantou" value="{tantou}" class="acms-admin-form-width-half" /> </p>
+    <input type="hidden" name="field[]" value="tantou" />
+
+     <input type="hidden" name="tantou:v#required" value="" id="tantou-v-required" />
+      <div data-validator-label="tantou-v-required" class="validator-result-{tantou:v#required}">
+        <p class="error-text">
+          <span class="acms-icon acms-icon-attension"></span>担当者名は必ず入力してください。</p>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th>携帯電話 ※</th>
+    <td>
+      <input type="text" name="mobile" value="{mobile}" class="acms-admin-form-width-half" />
+      <input type="hidden" name="field[]" value="mobile" />
+      <input type="hidden" name="mobile:v#required" value="" id="mobile-v-required" />
+      <!-- BEGIN mobile:validator#required -->
+      <p class="acms-admin-text-error">携帯電話の番号を入力してください。</p>
+      <!-- END mobile:validator#required -->
+    </td>
+  </tr>
+  <tr>
+    <th>メールアドレス ※</th>
+    <td>{mail}</td>
+  </tr>
+
+
+    <tr>
+      <td colspan="2"><h2 class="acms-admin-text-danger">店舗基本</h2></td>
+    </tr>
+    <th>店舗名 ※</th>
+    <td>{name}</td>
+    </tr>
+    <tr>
+    <th width="300">住所 ※</th>
+    <td>
+      <input type="text" name="address" value="{address}" class="acms-admin-form-width-full" />
+      <input type="hidden" name="field[]" value="address" />
+    </td>
+  </tr>
+  <tr>
+    <th>電話番号</th>
+    <td>
+      <input type="text" name="spot_tel" value="{spot_tel}" />
+      <input type="hidden" name="field[]" value="spot_tel" />
+    </td>
+  </tr>
+  <tr>
+    <th>ショップURL</th>
+    <td>{url}</td>
+  </tr>
+  <tr>
+    <th>地図</th>
+    <td>
+
+    <!-- BEGIN_IF [{geo_lat}/nem] -->設定済み
+    <!-- ELSE -->未設定
+    <!-- END_IF -->
+  
+</td>
+</tr>
+
+    <tr>
+      <td colspan="2"><h2 class="acms-admin-text-danger">分類</h2></td>
+    </tr>
+  <!-- BEGIN_MODULE Module_Field id="area_list" -->
+  <tr width="300">
+    <th>{module_heading}</i>
+    </th>
+    <td>
+      <!-- BEGIN area:loop -->
+      <div class="acms-admin-form-checkbox acms-admin-margin-bottom-small">
+        <input type="checkbox" name="area_list[]" value="{area_name}" \{area_list:checked#{area_name}\}
+          id="input-checkbox-area_list-{area_name}" />
+        <label for="input-checkbox-area_list-{area_name}">
+          <i class="acms-admin-ico-checkbox"></i>{area_name}</label>
+      </div>
+      <!-- END area:loop -->
+
+      <input type="hidden" name="field[]" value="area_list" />
+    </td>
+  </tr>
+  <!-- END_MODULE Module_Field -->
+  <tr>
+    <th>料理ジャンル</th>
+    <td>
+        <!-- BEGIN_MODULE Module_Field id="genre_list" -->
+        <div>
+              <!-- BEGIN genre:loop -->
+
+        <div class="acms-admin-form-checkbox acms-admin-margin-bottom-small">
+          <input type="checkbox" name="genre_list[]" value="{genre_name}" \{genre_list:checked#{genre_name}\}
+            id="input-checkbox-genre_list-{genre_name}" />
+          <label for="input-checkbox-genre_list-{genre_name}">
+            <i class="acms-admin-ico-checkbox"></i>{genre_name}</label>
+        </div>
+      <!-- END genre:loop -->
+      <input type="hidden" name="field[]" value="genre_list" />
+
+    </div>
+  <!-- END_MODULE Module_Field -->
+
+    </td>
+  </tr>
+
+    <tr>
+      <td colspan="2"><h2 class="acms-admin-text-danger">営業</h2></td>
+    </tr>
+
+  <tr>
+    <th>営業時間</th>
+    <td>
+      <textarea name="open_time" class="acms-admin-form-width-full js-lite-editor-field" rows="3">{open_time}</textarea>
+      <input type="hidden" name="field[]" value="open_time" />
+    </td>
+  </tr>
+  <tr>
+    <th>テイクアウト営業時間</th>
+    <td>
+      <textarea name="takeout_open_time" class="acms-admin-form-width-full js-lite-editor-field" rows="3">{takeout_open_time}</textarea>
+      <input type="hidden" name="field[]" value="takeout_open_time" />
+    </td>
+  </tr>
+  <tr>
+    <th>定休日</th>
+    <td>
+      <input type="text" name="holiday" value="{holiday}" />
+      <input type="hidden" name="field[]" value="holiday" />
+    </td>
+  </tr>
+  <tr>
+    <th>アクセス</th>
+    <td>
+      <textarea name="access" class="acms-admin-form-width-full js-lite-editor-field" rows="3">{access}</textarea>
+      <input type="hidden" name="field[]" value="access" />
+    </td>
+  </tr>
+  <tr>
+    <th>キャッチコピー</th>
+    <td>
+      <input type="text" name="catchcopy" value="{catchcopy}" class="acms-admin-form-width-3quarters js-countup" data-label-target=".copy-text-number" data-max="20" /> <span class="copy-text-number">0</span> / <span>20</span>
+      <input type="hidden" name="field[]" value="catchcopy" />
+      </p>
+
+    </td>
+  </tr>
+  <tr>
+    <th>店舗PR</th>
+    <td>
+      <textarea name="introduction_text" class="acms-admin-form-width-full js-lite-editor-field"
+        rows="3">{introduction_text}</textarea>
+      <input type="hidden" name="field[]" value="introduction_text" />
+    </td>
+  </tr>
+
+  <tr>
+    <th>お支払い方法</th>
+    <td>
+      <div class="acms-admin-form-checkbox acms-admin-margin-bottom-small">
+        <input type="checkbox" name="payment[]" value="現金" {payment:checked#現金} id="input-checkbox-payment-現金" />
+        <label for="input-checkbox-payment-現金">
+          <i class="acms-admin-ico-checkbox"></i>現金</label>
+      </div>
+      <div class="acms-admin-form-checkbox acms-admin-margin-bottom-small">
+        <input type="checkbox" name="payment[]" value="クレジットカード" {payment:checked#クレジットカード}
+          id="input-checkbox-payment-クレジットカード" />
+        <label for="input-checkbox-payment-クレジットカード">
+          <i class="acms-admin-ico-checkbox"></i>クレジットカード</label>
+      </div>
+      <div class="acms-admin-form-checkbox acms-admin-margin-bottom-small">
+        <input type="checkbox" name="payment[]" value="PayPay" {payment:checked#PayPay}
+          id="input-checkbox-payment-PayPay" />
+        <label for="input-checkbox-payment-PayPay">
+          <i class="acms-admin-ico-checkbox"></i>PayPay</label>
+      </div>
+      その他 <input type="text" name="payment_other" value="{payment_other}" class="acms-admin-form-width-quarter" />
+      <input type="hidden" name="field[]" value="payment_other" />
+    </td>
+  </tr>
+
+
+    <tr>
+      <td><h2 class="acms-admin-text-danger">写真</h2></td>
+      <td>
+        <p class="acms-admin-alert acms-admin-alert-info" style="font-size:110%;">
+  1枚目の写真がお店の代表画像になります。1枚目は料理の画像がお勧めです。<br>写真は最低1枚必ず設定してください。
+</p>
+      </td>
+    </tr>
+  <tr>
+    <th>写真1 ※</th>
+    <td class="js-img_resize_cf">
+      <!-- BEGIN_IF [{food_picture1@path}/nem] -->
+      <img src="%{ARCHIVES_DIR}{food_picture1@path}" class="acms-admin-img-responsive js-img_resize_preview" alt="{food_picture1@alt}" width="800" />
+      <input type="hidden" name="food_picture1@old" value="{food_picture1@path}" />
+      <div class="acms-admin-form-checkbox">
+        <input type="checkbox" name="food_picture1@edit" value="delete" id="input-checkbox-food_picture1@edit" />
+        <label for="input-checkbox-food_picture1@edit">
+          <i class="acms-admin-ico-checkbox"></i>削除</label>
+      </div>
+      <!-- ELSE -->
+      <img src="%{ARCHIVES_DIR}{food_picture1@path}" class="acms-admin-img-responsive js-img_resize_preview" style="display:none" />
+      <!-- END_IF -->
+      <input type="file" name="food_picture1" size="20" class="js-img_resize_input" />
+      <br/>
+      <input type="hidden" name="field[]" value="food_picture1" />
+      <input type="hidden" name="food_picture1:extension" value="image" />
+      <input type="hidden" name="food_picture1@largeWidth" value="1600" />
+      <input type="hidden" name="food_picture1@filename" value="" />
+
+
+      <input type="hidden" name="food_picture1@path:v#required" value="" id="food_picture1@path-v-required" />
+      <div data-validator-label="food_picture1@path-v-required" class="validator-result-{food_picture1@path:v#required}">
+        <p class="error-text">
+          <span class="acms-icon acms-icon-attension"></span>画像1は必ず入力してください。</p>
+        </p>
+      </div>
+
+
+    </td>
+  </tr>
+  <tr>
+    <th>写真2
+    </th>
+    <td class="js-img_resize_cf">
+      <!-- BEGIN_IF [{food_picture2@path}/nem] -->
+      <img src="%{ARCHIVES_DIR}{food_picture2@path}" class="acms-admin-img-responsive js-img_resize_preview" alt="{food_picture2@alt}" width="800" />
+      <input type="hidden" name="food_picture2@old" value="{food_picture2@path}" />
+      <div class="acms-admin-form-checkbox">
+        <input type="checkbox" name="food_picture2@edit" value="delete" id="input-checkbox-food_picture2@edit" />
+        <label for="input-checkbox-food_picture2@edit">
+          <i class="acms-admin-ico-checkbox"></i>削除</label>
+      </div>
+      <!-- ELSE -->
+      <img src="%{ARCHIVES_DIR}{food_picture2@path}" class="acms-admin-img-responsive js-img_resize_preview" style="display:none" />
+      <!-- END_IF -->
+      <input type="file" name="food_picture2" size="20" class="js-img_resize_input" />
+      <br/>
+      <input type="hidden" name="field[]" value="food_picture2" />
+      <input type="hidden" name="food_picture2:extension" value="image" />
+      <input type="hidden" name="food_picture2@largeWidth" value="1600" />
+      <input type="hidden" name="food_picture2@filename" value="" />
+    </td>
+  </tr>
+  <tr>
+    <th>写真3
+    </th>
+    <td class="js-img_resize_cf">
+      <!-- BEGIN_IF [{food_picture3@path}/nem] -->
+      <img src="%{ARCHIVES_DIR}{food_picture3@path}" class="acms-admin-img-responsive js-img_resize_preview" alt="{food_picture3@alt}" width="800" />
+      <input type="hidden" name="food_picture3@old" value="{food_picture3@path}" />
+      <div class="acms-admin-form-checkbox">
+        <input type="checkbox" name="food_picture3@edit" value="delete" id="input-checkbox-food_picture3@edit" />
+        <label for="input-checkbox-food_picture3@edit">
+          <i class="acms-admin-ico-checkbox"></i>削除</label>
+      </div>
+      <!-- ELSE -->
+      <img src="%{ARCHIVES_DIR}{food_picture3@path}" class="acms-admin-img-responsive js-img_resize_preview" style="display:none" />
+      <!-- END_IF -->
+      <input type="file" name="food_picture3" size="20" class="js-img_resize_input" />
+      <br/>
+      <input type="hidden" name="field[]" value="food_picture3" />
+      <input type="hidden" name="food_picture3:extension" value="image" />
+      <input type="hidden" name="food_picture3@largeWidth" value="1600" />
+      <input type="hidden" name="food_picture3@filename" value="" />
+    </td>
+  </tr>
+ 
+    <tr>
+      <td><h2 class="acms-admin-text-danger">メニュー</h2></td>
+      <td>
+        <p class="acms-admin-alert acms-admin-alert-info" style="font-size:110%;">
+メニューの写真を撮ってアップロードするか、メニューの商品と金額をいくつか入力してください。
+</p>
+      </td>
+    </tr>
+  <tr>
+    <th>メニュー画像</th>
+    <td class="js-img_resize_cf">
+      <!-- BEGIN_IF [{menu_picture@path}/nem] -->
+      <img src="%{ARCHIVES_DIR}{menu_picture@path}" class="acms-admin-img-responsive js-img_resize_preview" style="width:640px" alt="{menu_picture@alt}" />
+      <input type="hidden" name="menu_picture@old" value="{menu_picture@path}" />
+      <div class="acms-admin-form-checkbox">
+        <input type="checkbox" name="menu_picture@edit" value="delete" id="input-checkbox-menu_picture@edit" />
+        <label for="input-checkbox-menu_picture@edit">
+          <i class="acms-admin-ico-checkbox"></i>削除</label>
+      </div>
+      <!-- ELSE -->
+      <img src="%{ARCHIVES_DIR}{menu_picture@path}" class="acms-admin-img-responsive js-img_resize_preview" style="width:640px;display:none" />
+      <!-- END_IF -->
+      <input type="file" name="menu_picture" size="20" class="js-img_resize_input" />
+      <br/>
+      <input type="hidden" name="field[]" value="menu_picture" />
+      <input type="hidden" name="menu_picture:extension" value="image" />
+      <input type="hidden" name="menu_picture@size" value="640" />
+      <input type="hidden" name="menu_picture@largeWidth" value="1600" />
+      <input type="hidden" name="menu_picture@filename" value="" />
+    </td>
+  </tr>
+
+  <tr>
+    <th>税表示</th>
+    <td>
+      <div class="acms-admin-form-radio">
+        <input type="radio" name="tax" value="税込" {tax:checked#税込} id="input-radio-tax-税込" />
+        <label for="input-radio-tax-税込">
+          <i class="acms-admin-ico-radio"></i>税込</label>
+      </div>
+      <div class="acms-admin-form-radio">
+        <input type="radio" name="tax" value="税別" {tax:checked#税別} id="input-radio-tax-税別" />
+        <label for="input-radio-tax-税別">
+          <i class="acms-admin-ico-radio"></i>税別</label>
+      </div>
+      <input type="hidden" name="field[]" value="tax" />
+    </td>
+  </tr>
+  <tr>
+    <th>メニュー</th>
+    <td>
+
+<table class="js-fieldgroup-sortable adminTable acms-admin-table-admin-edit">
+  <thead class="acms-admin-hide-sp">
+    <tr>
+      <th class="acms-admin-table-left acms-admin-admin-config-table-item-handle"> </th>
+      <th class="acms-admin-table-left">商品名
+        <i class="acms-admin-icon-tooltip js-acms-tooltip" data-acms-tooltip="商品名が入ります。"></i>
+      </th>
+      <th class="acms-admin-table-left">価格
+        <i class="acms-admin-icon-tooltip js-acms-tooltip" data-acms-tooltip="商品価格が入ります。"></i>
+      </th>
+      <th class="acms-admin-table-left acms-admin-admin-config-table-action">削除</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- BEGIN items_list:loop -->
+    <tr class="sortable-item">
+      <td class="item-handle acms-admin-table-nowrap">
+        <i class="acms-admin-icon-sort"></i>
+      </td>
+      <td>
+        <input type="text" name="itemlist_name[]" value="{itemlist_name}" class="acms-admin-form-width-full" />
+      </td>
+      <td>
+        <input type="text" name="itemlist_price[]" value="{itemlist_price}" class="acms-admin-form-width-small" />
+      </td>
+      <td class="acms-admin-table-nowrap">
+        <input type="button" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger" value="削除" />
+      </td>
+    </tr>
+    <!-- END items_list:loop -->
+    <tr class="sortable-item item-template">
+      <td class="item-handle acms-admin-table-nowrap">
+        <i class="acms-admin-icon-sort"></i>
+      </td>
+      <td>
+        <input type="text" name="itemlist_name[]" value="" class="acms-admin-form-width-full" />
+ <input type="hidden" class="item-max" value="10" />
+     </td>
+      <td>
+        <input type="text" name="itemlist_price[]" value="" class="acms-admin-form-width-small" /> 円
+     </td>
+      <td class="acms-admin-table-nowrap">
+        <input type="button" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger" value="削除" />
+      </td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colSpan="4">
+        <input type="button" class="item-insert acms-admin-btn-admin" value="追加" />
+      </td>
+    </tr>
+  </tfoot>
+</table>
+<input type="hidden" name="@items_list[]" value="itemlist_name" />
+<input type="hidden" name="field[]" value="itemlist_name" />
+<input type="hidden" name="@items_list[]" value="itemlist_price" />
+<input type="hidden" name="field[]" value="itemlist_price" />
+<input type="hidden" name="field[]" value="@items_list" />
+
+    </td>
+  </tr>
+
+    <tr>
+      <td colspan="2"><h2 class="acms-admin-text-danger">外部サイト</h2></td>
+    </tr>
+    <tr>
+      <td><h2 class="acms-admin-text-danger">リンク</h2></td>
+      <td>
+        <p class="acms-admin-alert acms-admin-alert-info" style="font-size:110%;">
+デリバリー対応については、<a href="https://www.ubereats.com/jp/">Uber Eats</a>・<a href="https://demae-can.com/">出前館</a>・<a href="https://delima.line.me/">LINEデリマ</a>・<a href="https://delivery.dmkt-sp.jp/">dデリバリー</a>などの店舗ページを設定してください
+</p>
+      </td>
+    </tr>
+  <tr>
+    <th><label for="input-text-twitter_account">Twitter</label></th>
+    <td>
+      <input type="text" name="twitter_account" value="{twitter_account}" placeholder="例）takeout_higashiosaka"
+        id="input-text-twitter_account" class="acms-admin-form-width-medium">
+      <input type="hidden" name="field[]" value="twitter_account">
+    </td>
+  </tr>
+  <tr>
+    <th><label for="input-text-instagram_account">Instagram</label></th>
+    <td>
+      <input type="text" name="instagram_account" value="{instagram_account}" placeholder="例）takeout_higashiosaka"
+        id="input-text-instagram_account" class="acms-admin-form-width-medium">
+      <input type="hidden" name="field[]" value="instagram_account">
+    </td>
+  </tr>
+  <tr>
+    <th><label for="input-text-facebook_account">Facebook</label></th>
+    <td>
+      <input type="text" name="facebook_account" value="{facebook_account}" placeholder="例）takeout_higashiosaka"
+        id="input-text-facebook_account" class="acms-admin-form-width-medium">
+      <input type="hidden" name="field[]" value="facebook_account">
+    </td>
+  </tr>
+  <tr>
+    <th><label for="input-text-line_account">LINE</label></th>
+    <td>
+      <input type="text" name="line_account" value="{line_account}" placeholder="例）https://line.me/R/ti/p/%40ovh6471a"
+        id="input-text-line_account" class="acms-admin-form-width-medium">
+      <input type="hidden" name="field[]" value="line_account">
+    </td>
+  </tr>
+  <tr>
+    <th>デリバリー対応</th>
+    <td>
+
+<table class="js-fieldgroup-sortable adminTable acms-admin-table-admin-edit">
+      <thead class="acms-admin-hide-sp">
+        <tr>
+          <th class="acms-admin-table-left acms-admin-admin-config-table-item-handle"> </th>
+          <th class="acms-admin-table-left">サービス名</th>
+          <th class="acms-admin-table-left">店舗ページURL</th>
+          <th class="acms-admin-table-left acms-admin-admin-config-table-action">削除</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- BEGIN delivery_list:loop -->
+        <tr class="sortable-item">
+          <td class="item-handle acms-admin-table-nowrap">
+            <i class="acms-admin-icon-sort"></i>
+          </td>
+          <td>
+            <input type="text" name="delivery_name[]" value="{delivery_name}" class="acms-admin-form-width-full" />
+          </td>
+          <td>
+            <input type="text" name="delivery_url[]" value="{delivery_url}" class="acms-admin-form-width-full" />
+          </td>
+          <td class="acms-admin-table-nowrap">
+            <input type="button" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger" value="削除" />
+          </td>
+        </tr>
+        <!-- END delivery_list:loop -->
+        <tr class="sortable-item item-template">
+          <td class="item-handle acms-admin-table-nowrap">
+            <i class="acms-admin-icon-sort"></i>
+          </td>
+          <td>
+            <input type="text" name="delivery_name[]" value="" class="acms-admin-form-width-full" />
+          </td>
+          <td>
+            <input type="text" name="delivery_url[]" value="" class="acms-admin-form-width-full" />
+          </td>
+          <td class="acms-admin-table-nowrap">
+            <input type="button" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger" value="削除" />
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colSpan="4">
+            <input type="button" class="item-insert acms-admin-btn-admin" value="追加" /> ※ デリバリーサービスを利用している場合は店舗ページへのURLを入力してください。
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+    <input type="hidden" name="@delivery_list[]" value="delivery_name" />
+    <input type="hidden" name="field[]" value="delivery_name" />
+    <input type="hidden" name="@delivery_list[]" value="delivery_url" />
+    <input type="hidden" name="field[]" value="delivery_url" />
+    <input type="hidden" name="field[]" value="@delivery_list" />
+
+    </td>
+  </tr>
+    <tr>
+      <td colspan="2"><h2 class="acms-admin-text-danger">備考</h2></td>
+    </tr>
+  <tr>
+    <th>備考欄</th>
+    <td>
+      <textarea name="bikou_note" class="acms-admin-form-width-full" rows="10" >{bikou_note}</textarea>
+      <input type="hidden" name="field[]" value="bikou_note" />
+    <input type="hidden" name="bikou_note:search" value="0">
+
+    </td>
+  </tr>
+</table>
+

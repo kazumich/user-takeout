@@ -1,0 +1,32 @@
+<!-- BEGIN_MODULE User_Search id="shop-detail" -->
+<!-- BEGIN user:loop -->
+<meta charset="UTF-8">
+<link rel="canonical" href="%{PERMALINK}">
+<title>{name} | 店舗紹介 | <!-- GET_Rendered id="title" --></title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+@include("/include/head/robots.html")
+<meta property="og:url" content="%{PERMALINK}">
+<meta property="og:site_name" content="%{ROOT_BLOG_NAME}">
+<meta property="og:title" content="{name} | 店舗紹介 | <!-- GET_Rendered id="title" -->">
+<meta property="og:type" content="article">
+
+<meta property="og:description" content="{introduction_text}[mb_trim(350, '...')|delnl|escape]">
+<meta property="og:image" content="%{HTTP_ARCHIVES_DIR}{food_picture1}">
+<meta property="og:image:secure_url" content="%{HTTP_ARCHIVES_DIR}{food_picture1}" />
+<meta property="og:image:width" content="{food_picture1@x}" />
+<meta property="og:image:height" content="{food_picture1@y}" />
+
+<meta name="description" content="{introduction_text}[mb_trim(350, '...')|delnl|escape]">
+<meta name="keywords" content="{keywords}">
+<meta name="twitter:title" content="{name} | 店舗紹介 | <!-- GET_Rendered id="title" -->">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:domain" content="%{DOMAIN}">
+<meta name="twitter:image" content="%{HTTP_ARCHIVES_DIR}{food_picture1}">
+<!-- END user:loop -->
+<!-- END_MODULE User_Search -->
+
+
+<!-- BEGIN_MODULE Blog_Field -->
+<!-- BEGIN_SetRendered id="title" -->{blog_meta_title} | %{BLOG_NAME}<!-- END_SetRendered -->
+<!-- END_MODULE Blog_Field -->

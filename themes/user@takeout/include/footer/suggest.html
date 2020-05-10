@@ -1,0 +1,23 @@
+<!-- BEGIN_MODULE Blog_Field -->
+<div class="suggest-box">
+	<div class="narrow-container sp-container">
+		<div class="suggest-item">
+			<p class="suggest-btn acms-text-center">
+				<!-- BEGIN_IF [{form_url2}/nem] -->
+
+				<a href="{form_url2}" class="btn-attention-block-large">情報掲載はこちら（無料）</a>
+				<!-- ELSE -->
+				<a href="%{ROOT_BLOG_URL}regist/" class="btn-attention-block-large">情報掲載はこちら（無料）</a>
+				<!-- END_IF -->
+			</p>
+			<!-- BEGIN_IF [{form_url}/nem] -->
+			<p class="acms-text-center">その他のお問い合わせについては、<a href="{form_url}/">お問い合わせフォーム</a>よりお願いします。
+			</p>
+			<!-- ELSE -->
+			<p class="acms-text-center">その他のお問い合わせについては、<a href="%{ROOT_BLOG_URL}contact/">お問い合わせフォーム</a>よりお願いします。</p>
+			<!-- END_IF -->
+
+		</div>
+	</div>
+</div>
+<!-- END_MODULE Blog_Field -->
